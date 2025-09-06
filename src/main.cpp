@@ -1,8 +1,40 @@
 #include <raylib.h>
-#include <iostream>
+#include "../assets/lonelyBoxColors.cpp"
 
 int main(void)
 {
-    std::cout << "hello" << std::endl;
+    // window consts
+    const int SCREEN_WIDTH = 800;
+    const int SCREEN_HEIGHT = 800;
+    const char* SCREEN_NAME = "lonelyBox";
 
+    const int TITLE_RECT_WIDTH = SCREEN_WIDTH / 1.5;
+    const int TITLE_RECT_HEIGHT = SCREEN_HEIGHT / 3;
+
+    // initialize context
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_NAME);
+
+    // set the fps
+    SetTargetFPS(60);
+
+    // game loop
+    while (!WindowShouldClose())
+    {
+
+
+        BeginDrawing();
+
+        // clear background before drawing anything
+        ClearBackground(DARKGRAY);
+
+        DrawText("lonelyBox", 90, 200, 100, PINK);
+
+        DrawRectangle(SCREEN_WIDTH - TITLE_RECT_WIDTH, SCREEN_HEIGHT - TITLE_RECT_HEIGHT, TITLE_RECT_WIDTH, TITLE_RECT_HEIGHT, SEWERGROUND);
+
+        EndDrawing();
+    }
+
+
+    CloseWindow();
+    return 0;
 }

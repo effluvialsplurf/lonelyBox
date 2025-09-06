@@ -1,5 +1,6 @@
 # CMake and build files
 /build/
+/build_ninja/
 /CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
