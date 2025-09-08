@@ -1,6 +1,31 @@
 #include <raylib.h>
 #include "../assets/lonelyBoxColors.cpp"
 
+typedef struct WindowSize {
+	float windowWidth;
+	float windowHeight;
+
+	WindowSize(float val_windowWidth = 0, float val_windowHeight = 0) : windowWidth(val_windowWidth), windowHeight(val_windowHeight) {}
+} WindowSize;
+
+WindowSize GetRelativeWindowSize(float screenPercentage)
+{
+	// get our monitor size
+	const int monitorWidth = GetMonitorWidth(0);
+	const int monitorHeight = GetMonitorHeight(0);
+
+	// get the proper window sizes for the game
+	const int screenWidth = (int)(monitorWidth * screenPercentage);
+	const int screenHeight = (int)(monitorHeight * screenPercentage);
+
+	WindowSize gameSize = {GetMonitorWidth(0) * screenPercentage, GetMonitorHeight(0) * screenPercentage};
+
+	SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+
+	return gameSize;
+
+}
+
 int main(void)
 {
     // window consts
