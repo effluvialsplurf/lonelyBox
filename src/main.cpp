@@ -28,9 +28,10 @@ WindowSize GetRelativeWindowSize(float screenPercentage)
 
 int main(void)
 {
-    // window consts
-    const int SCREEN_WIDTH = 800;
-    const int SCREEN_HEIGHT = 800;
+    // get window consts
+    const WindowSize SCREEN_SIZE = GetRelativeWindowSize(80);
+    const int SCREEN_WIDTH = SCREEN_SIZE.windowWidth;
+    const int SCREEN_HEIGHT = SCREEN_SIZE.windowHeight;
     const char* SCREEN_NAME = "lonelyBox";
 
     const int TITLE_RECT_WIDTH = SCREEN_WIDTH / 1.5;
