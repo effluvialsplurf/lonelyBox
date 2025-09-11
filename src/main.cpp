@@ -1,12 +1,13 @@
 #include <raylib.h>
 #include "../assets/lonelyBoxColors.cpp"
+#include "./character.cpp"
 
 typedef enum Screen {TITLE, ONE, TWO, THREE, FOUR} Screen;
 Screen current_screen = TITLE;
 
-const int display_width = 1280;
-const int display_height = 720;
-int fps = 60;
+const float display_width = 1280;
+const float display_height = 720;
+const int fps = 60;
 
 int main(void) {
     // initialize context
@@ -14,12 +15,16 @@ int main(void) {
     // set the fps
     SetTargetFPS(fps);
 
+    CharacterBox player; 
+
     // game loop
     while (!WindowShouldClose()) {
         BeginDrawing();
 
         // clear background before drawing anything
         ClearBackground(DARKGRAY);
+
+        DrawRectangleV(player.position, player.size, SKYBLUE);
 
         switch (current_screen) {
             case TITLE: 
