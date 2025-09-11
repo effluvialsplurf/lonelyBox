@@ -1,61 +1,72 @@
 #include <raylib.h>
 #include "../assets/lonelyBoxColors.cpp"
 
-typedef struct WindowSize {
-	float windowWidth;
-	float windowHeight;
+typedef enum Screen {TITLE, ONE, TWO, THREE, FOUR} Screen;
+Screen current_screen = TITLE;
 
-	WindowSize(float val_windowWidth = 0, float val_windowHeight = 0) : windowWidth(val_windowWidth), windowHeight(val_windowHeight) {}
-} WindowSize;
+const int display_width = 1280;
+const int display_height = 720;
+int fps = 60;
 
-WindowSize GetRelativeWindowSize(float screenPercentage)
-{
-	// get our monitor size
-	const int monitorWidth = GetMonitorWidth(0);
-	const int monitorHeight = GetMonitorHeight(0);
-
-	// get the proper window sizes for the game
-	const int screenWidth = (int)(monitorWidth * screenPercentage);
-	const int screenHeight = (int)(monitorHeight * screenPercentage);
-
-	WindowSize gameSize = {GetMonitorWidth(0) * screenPercentage, GetMonitorHeight(0) * screenPercentage};
-
-	SetConfigFlags(FLAG_WINDOW_RESIZABLE);
-
-	return gameSize;
-
-}
-
-int main(void)
-{
-    // get window consts
-    const WindowSize SCREEN_SIZE = GetRelativeWindowSize(80);
-    const int SCREEN_WIDTH = SCREEN_SIZE.windowWidth;
-    const int SCREEN_HEIGHT = SCREEN_SIZE.windowHeight;
-    const char* SCREEN_NAME = "lonelyBox";
-
-    const int TITLE_RECT_WIDTH = SCREEN_WIDTH / 1.5;
-    const int TITLE_RECT_HEIGHT = SCREEN_HEIGHT / 3;
-
+int main(void) {
     // initialize context
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_NAME);
-
+    InitWindow(display_width, display_height, "lonelyBox");
     // set the fps
-    SetTargetFPS(60);
+    SetTargetFPS(fps);
 
     // game loop
-    while (!WindowShouldClose())
-    {
-
-
+    while (!WindowShouldClose()) {
         BeginDrawing();
 
         // clear background before drawing anything
         ClearBackground(DARKGRAY);
 
-        DrawText("lonelyBox", 90, 200, 100, PINK);
+        switch (current_screen) {
+            case TITLE: 
+            {
+                DrawText("lonelyBox", 90, 200, 100, PINK);
 
-        DrawRectangle(SCREEN_WIDTH - TITLE_RECT_WIDTH, SCREEN_HEIGHT - TITLE_RECT_HEIGHT, TITLE_RECT_WIDTH, TITLE_RECT_HEIGHT, SEWERGROUND);
+                if (IsKeyPressed(KEY_RIGHT)){
+                    current_screen = ONE;
+                }
+            }break;
+
+            case ONE:
+            {
+                DrawText("one", 90, 200, 100, PINK);
+
+                if (IsKeyPressed(KEY_RIGHT)){
+                    current_screen = TWO;
+                }
+            }break;
+
+            case TWO:
+            {
+                DrawText("two", 90, 200, 100, PINK);
+
+                if (IsKeyPressed(KEY_RIGHT)){
+                    current_screen = THREE;
+                }
+            }break;
+
+            case THREE:
+            {
+                DrawText("three", 90, 200, 100, PINK);
+
+                if (IsKeyPressed(KEY_RIGHT)){
+                    current_screen = FOUR;
+                }
+            }break;
+
+            case FOUR:
+            {
+                DrawText("four", 90, 200, 100, PINK);
+
+                if (IsKeyPressed(KEY_RIGHT)){
+                    current_screen = TITLE;
+                }
+            }break;
+        }
 
         EndDrawing();
     }
