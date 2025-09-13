@@ -1,5 +1,4 @@
 #include <raylib.h>
-//#include <math.h>
 #include "common.h"
 #include "entities.h"
 #include "scenes.h"
