@@ -1,6 +1,8 @@
 #include <raylib.h>
 #include "../assets/lonelyBoxColors.cpp"
-#include "./character.cpp"
+#include "./entitymanager.cpp"
+#include "./entityupdaters.cpp"
+#include "common.h"
 
 typedef enum Screen {TITLE, ONE, TWO, THREE, FOUR} Screen;
 Screen current_screen = TITLE;
@@ -15,7 +17,9 @@ int main(void) {
     // set the fps
     SetTargetFPS(fps);
 
-    CharacterBox player; 
+    int player_id = create_entity();
+    add_position_component(player_id, 0, 0);
+    add_velocity_component(player_id, 1, 1);
 
     // game loop
     while (!WindowShouldClose()) {
@@ -23,8 +27,12 @@ int main(void) {
 
         // clear background before drawing anything
         ClearBackground(DARKGRAY);
+        
+        // update game state every frame
+        move_entities(GetFrameTime());
 
-        DrawRectangleV(player.position, player.size, SKYBLUE);
+        // draw player entity
+        draw_entities();
 
         switch (current_screen) {
             case TITLE: 
@@ -80,3 +88,4 @@ int main(void) {
     CloseWindow();
     return 0;
 }
+
