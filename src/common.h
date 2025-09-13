@@ -38,4 +38,8 @@ int create_entity(void);
 void add_position_component(int entity_id, float x, float y);
 void add_velocity_component(int entity_id, float x, float y);
 
+// functions for entity updating
+void move_entities(float delta_time);
+void draw_entities();
+
 #endif

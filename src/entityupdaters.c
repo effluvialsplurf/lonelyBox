@@ -26,7 +26,7 @@ void draw_entities() {
         if (active_entities[i] && (component_masks[i] 
             & POSITION_COMPONENT_BIT) == POSITION_COMPONENT_BIT) {
             PositionComponent *pos = &position_components[i];
-            DrawRectangleV({pos->x, pos->y}, {50, 50}, SKYBLUE);
+            DrawRectangleV((Vector2){pos->x, pos->y}, (Vector2){50, 50}, SKYBLUE);
         }
     }
 }

@@ -1,8 +1,9 @@
 #include <raylib.h>
-#include "../assets/lonelyBoxColors.cpp"
-#include "./entitymanager.cpp"
-#include "./entityupdaters.cpp"
+#include <math.h>
 #include "common.h"
+//#include "../assets/lonelyBoxColors.c"
+//#include "./entitymanager.c"
+//#include "./entityupdaters.c"
 
 typedef enum Screen {TITLE, ONE, TWO, THREE, FOUR} Screen;
 Screen current_screen = TITLE;
