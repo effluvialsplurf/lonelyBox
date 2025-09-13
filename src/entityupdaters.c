@@ -1,4 +1,3 @@
-#include "./common.h"
 #include <raylib.h>
 #include "entities.h"
 

@@ -1,5 +1,4 @@
 #include <raylib.h>
-#include "./common.h"
 #include "entities.h"
 
 int active_entities[MAX_ENTITIES];
