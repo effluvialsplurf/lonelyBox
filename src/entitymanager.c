@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include "./common.h"
+#include "entities.h"
 
 int active_entities[MAX_ENTITIES];
 PositionComponent position_components[MAX_ENTITIES];
@@ -9,7 +10,7 @@ ComponentMask component_masks[MAX_ENTITIES];
 // entity manager functions 
 int next_entity_id = 0;
 
-int create_entity() {
+int create_entity(void) {
     // check if we are at our entity limit
     if (next_entity_id >= MAX_ENTITIES) {
         return -1;

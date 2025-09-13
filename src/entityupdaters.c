@@ -1,5 +1,6 @@
 #include "./common.h"
 #include <raylib.h>
+#include "entities.h"
 
 // functions to update all the entities active in the game
 void move_entities(float delta_time) {
@@ -19,7 +20,7 @@ void move_entities(float delta_time) {
     }
 }
 
-void draw_entities() {
+void draw_entities(void) {
     // iterate through all the entities
     for (int i=0; i<next_entity_id; i++) {
         // check for active and has position component
