@@ -31,3 +31,17 @@ void draw_entities(void) {
     }
 }
 
+void process_inputs(int entity_id) {
+// i want to get the key pressed and call the proper handler
+    //const Vector2 mouse_position = GetMousePosition();
+    if (IsKeyPressed(KEY_SPACE)) {
+        if (active_entities[entity_id] && (component_masks[entity_id] 
+            & (POSITION_COMPONENT_BIT | VELOCITY_COMPONENT_BIT)) == (POSITION_COMPONENT_BIT | VELOCITY_COMPONENT_BIT)) {
+            VelocityComponent *vel  = &velocity_components[entity_id];
+            vel->x += 5;
+            vel->y += 5;
+
+        }
+    }
+}
+

@@ -25,6 +25,8 @@ int main(void) {
 
         UpdateDrawScene();
 
+        process_inputs(player_id);
+
         // update game state every frame
         move_entities(GetFrameTime());
 
